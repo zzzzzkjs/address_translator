@@ -1,6 +1,7 @@
 <template>
   <div>
     <Nuxt />
+    <!-- TODO: 이놈은 또 뭐지  -->
   </div>
 </template>
 
