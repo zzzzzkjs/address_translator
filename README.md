@@ -1,5 +1,7 @@
 # address_translator
 
+주소변환 앱 - vuejs(nuxtjs), typescript
+
 ## Build Setup
 
 ```bash
@@ -18,3 +20,4 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
