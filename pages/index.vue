@@ -26,25 +26,40 @@
 </template>
 
 <script lang="ts">
-// Component Class - 컴포넌트를 클래스로 만들경우 장점
-// 1. computed, methods 그리고 data를 따로 나눠서 선언하지 않아도 된다.
-// 2. 함수 선언 시 매번 ,로 구분 지어주지 않아도 된다.
-// 3. 자동완성 기능을 쉽게 사용할 수 있다.
-
-// import Vue from 'vue'
-import { Component, Vue } from 'nuxt-property-decorator'
-// import Logo from '~/components/Logo.vue'
-// TODO: 컴포넌트 선언 없는데 Logo컴포넌트가 불러와짐..(nuxt라서 가능한건지 확인해볼것)
-
+import { Component, Vue } from 'nuxt-property-decorator';
 @Component({
   components: {
     // Logo,
   },
 })
 export default class IndexPage extends Vue {
-  name: string = 'hello-nuxt-ts-decorator'
+  name: string = 'hello-nuxt-ts-decorator';
+  data() {
+    return {
+      title: '',
+    };
+  }
+  created() {
+    const qs = require('qs');
+    // NOTE: 요청 스펙에 apiKey를 파라미터로 전달하게 되있음..네트워크확인으로 apiKey 탈취당할수있어서 클라이언트에서 요청하는방식으로 하는건 좀 위험할듯..
+    // 우선은 탈취당해도 돈나가는거 아니니깐 그냥 두고 나중에 배포할때 서버단에서 요청하도록 숨겨야될듯
+    this.$axios
+      .post(
+        '/addrlink/addrEngApi.do',
+        qs.stringify({
+          confmKey: process.env.NUXT_ENV_API_KEY,
+          currentPage: 1,
+          countPerPage: 5,
+          keyword: '서울역',
+          resultType: 'json',
+        })
+      )
+      .then((res) => {
+        console.log('주소 조회 결과');
+        console.log(`data: ${res}`);
+      });
+  }
 }
-// export default Vue.extend({})
 </script>
 
 <style>

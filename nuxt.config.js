@@ -1,4 +1,7 @@
 export default {
+  dotenv: {
+    filename: '.env',
+  },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -26,7 +29,7 @@ export default {
   plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: true, // NOTE: components폴더 하위 컴포넌트들 자동으로 불러오도록 설정
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -48,8 +51,7 @@ export default {
   },
 
   proxy: {
-    // '/prefix-url': 'proxy-url', // NOTE: proxy url 작성
-    '/prefix-url': 'https://www.juso.go.kr', // NOTE: proxy url 작성
+    '/addrlink': 'https://www.juso.go.kr', // NOTE: proxy url 작성
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -57,4 +59,4 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-}
+};

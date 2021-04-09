@@ -1,12 +1,12 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = function (_moduleOpts) {
-  const moduleOptions = Object.assign({}, this.options.log, _moduleOptions)
+  const moduleOptions = Object.assign({}, this.options.log, _moduleOptions);
 
   this.addPlugin({
     src: path.resolve(__dirname, 'logs.template.js'),
     moduleOptions,
-  })
-}
+  });
+};
 
-module.exports.meta = require('../../../package.json')
+module.exports.meta = require('../../../package.json');
