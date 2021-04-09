@@ -52,6 +52,7 @@ export default {
 
   proxy: {
     '/addrlink': 'https://www.juso.go.kr', // NOTE: proxy url 작성
+    '/addrTrans': 'http://localhost:8080',
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content

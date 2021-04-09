@@ -41,19 +41,28 @@ export default class IndexPage extends Vue {
   }
   created() {
     const qs = require('qs');
-    // NOTE: 요청 스펙에 apiKey를 파라미터로 전달하게 되있음..네트워크확인으로 apiKey 탈취당할수있어서 클라이언트에서 요청하는방식으로 하는건 좀 위험할듯..
-    // 우선은 탈취당해도 돈나가는거 아니니깐 그냥 두고 나중에 배포할때 서버단에서 요청하도록 숨겨야될듯
+    // this.$axios
+    //   .post(
+    //     '/addrlink/addrEngApi.do',
+    //     qs.stringify({
+    //       currentPage: 1,
+    //       countPerPage: 5,
+    //       keyword: '서울역',
+    //       resultType: 'json',
+    //     })
+    //   )
+    //   .then((res) => {
+    //     console.log('주소 조회 결과');
+    //     console.log(`data: ${res}`);
+    //   });
+
     this.$axios
-      .post(
-        '/addrlink/addrEngApi.do',
-        qs.stringify({
-          confmKey: process.env.NUXT_ENV_API_KEY,
-          currentPage: 1,
-          countPerPage: 5,
-          keyword: '서울역',
-          resultType: 'json',
-        })
-      )
+      .post('/addrTrans/addrEng', {
+        currentPage: 1,
+        countPerPage: 5,
+        keyword: '서울역',
+        resultType: 'json',
+      })
       .then((res) => {
         console.log('주소 조회 결과');
         console.log(`data: ${res}`);
